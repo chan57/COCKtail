@@ -11,20 +11,22 @@
     <div class="flex gap-1 justify-center">
       <router-link :to="{name: 'Bylatter', params: {letter}}" v-for="letter in letters" :key="letter">{{letter}}</router-link>
     </div>
+
+    <h2>{{ ingredient }}</h2>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import store from "../store";
 import axiosClient from "../axiosClient.js";
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const ingredient = ref([])
 
 onMounted(async () => {
-
   const response = await axiosClient.get('/list.php?i=list')
-  console.log(response.data)
+  ingredient.value = response.data
 })
 
 </script>
