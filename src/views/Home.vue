@@ -9,9 +9,10 @@
     </div>
 
     <div class="flex gap-1 justify-center">
-      <router-link :to="{name: 'Bylatter', params: {letter}}" v-for="letter in letters" :key="letter">{{letter}}</router-link>
+      <router-link to="/" v-for="letter in letters" :key="letter">{{letter}}</router-link>
+      <!-- :to="{name: 'Bylatter', params: {letter}} -->
     </div>
-
+  <br>
     <h2>{{ ingredient }}</h2>
   </div>
 </template>
