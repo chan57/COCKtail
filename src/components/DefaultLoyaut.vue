@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-pink-100 h-full">
+  <div class="bg-zinc-200 h-full">
     <HederComponent />
     <main>
       <div class="max-w-[1200px] mx-auto">

@@ -1,14 +1,15 @@
 <template>
-  <div class="p-8 pb-0">
+  <div class="p-8 pb-0 font-serif">
     <h1 class="text-4xl font-bold mb-4">Search kocktails by Name</h1>
   </div>
   <div class="px-8 pb-3">
     <input
       type="text"
       v-model="keyword"
-      class="rounded border-2 bg-white border-gray-200 focus:ring-purple-500 focus:border-purple-500 w-full"
+      class="rounded border-2 bg-white border-gray-200 focus:ring-gray-700 focus:border-gray-700 w-full"
       placeholder="Search for ckoktails"
       @change="searchDrinks"
+      @keyup.enter="searchDrinks"
     />
   </div>
 
@@ -28,7 +29,7 @@ const drinks = computed(() => store.state.searchedCkoktail);
 
 function searchDrinks() {
   if (keyword.value) {
-    store.dispatch("searchDrinks", keyword.value);
+    store.dispatch("searchCkoktails", keyword.value);
   } else {
     store.commit("setSearchedCkoktails", []);
   }

@@ -10,7 +10,7 @@
       />
     </router-link>
     <div class="p-3">
-      <h3 class="font-bold">{{ drink.strAlcoholic }}</h3>
+      <h3 class="font-bold">{{ drink.strDrink }}</h3>
       <p class="mb-4">
         {{ $filters.truncateWords(drink.strInstructions, 20) }}
       </p>
