@@ -1,3 +1,6 @@
 export default {
-  product : "Salmon"
+  searchedCkoktail: [],
+  ckoktailByLetter: [],
+  ckoktailByIngredient: [],
+  ingredient: {}
 }

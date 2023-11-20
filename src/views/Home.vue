@@ -1,33 +1,23 @@
 <template>
-  <div class="flex flex-col p-2">
-    <div class="flex justify-center">
-      <input
-      class="item-center rounded border-2 border-black-300 my-4 py-2 w-72 "
-      type="text"
-      placeholder="Search for cocktail"
-    />
-    </div>
-
-    <div class="flex gap-1 justify-center">
-      <router-link to="/" v-for="letter in letters" :key="letter">{{letter}}</router-link>
-      <!-- :to="{name: 'Bylatter', params: {letter}} -->
-    </div>
-  <br>
-    <h2>{{ ingredient }}</h2>
+  <div class="p-8 pb-0">
+    <h1 class="text-4xl font-bold mb-4">Random kocktails</h1>
   </div>
+  <Cocktails :drinks="drinks" />
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import store from "../store";
+import Cocktails from "../components/Cocktails.vue";
 import axiosClient from "../axiosClient.js";
 
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const ingredient = ref([])
+const drinks = ref([]);
 
 onMounted(async () => {
-  const response = await axiosClient.get('/list.php?i=list')
-  ingredient.value = response.data
-})
-
+  for (let i = 0; i < 9; i++) {
+    axiosClient
+      .get(`random.php`)
+      .then(({ data }) => drinks.value.push(data.drinks[0]));
+  }
+});
 </script>
